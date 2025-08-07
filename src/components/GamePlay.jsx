@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 
 import '../styles/gameplay.css';
 
-export default function GamePlay() {
+export default function GamePlay(props) {
 
+    const [ cardIdsArray, setCardIdsArray ] = useState([]);
     const [ cardsInfo, setCardsInfo ] = useState(null);
 
     useEffect(() => {
@@ -37,13 +38,34 @@ export default function GamePlay() {
             [cardsInfo[i], cardsInfo[random]] = [cardsInfo[random], cardsInfo[i]];
         }
 
-        const newArray = [...cardsInfo]
+        const newArray = [...cardsInfo];
+        setCardIdsArray ([...cardIdsArray, event.target.parentElement.id]);
 
-        setCardsInfo(newArray);
-
-        console.log(event.target.parentElement.getAttribute('key'))
+        setCardsInfo( newArray );
     }
 
+    useEffect(() => {
+
+        for (let i = 0; i < cardIdsArray.length; i++) {
+            for (let j = i + 1; j < cardIdsArray.length; j++) {
+                if ( cardIdsArray[i] === cardIdsArray[j]) {
+                    props.setBestScore( cardIdsArray.length - 1 );  
+                    setCardIdsArray([]);
+
+                    console.log('matched');
+                }
+                else {
+                    
+                }
+            }
+        }
+        
+        props.setScore( cardIdsArray.length );
+
+        console.log( cardIdsArray )
+
+    }, [cardIdsArray]);
+        
     
     return (
         <div className='game-play'>
@@ -59,14 +81,12 @@ function GameCard(props) {
     return (
         <>
             { cardsInfo.map((cardInfo) => (
-                <div className='game-card' style={{ backgroundImage: `url(${cardInfo.image})` }} onClick={ props.onClick } key={ cardInfo.id } >
+                <div id={ cardInfo.id } className='game-card' style={{ backgroundImage: `url(${cardInfo.image})` }} onClick={ props.onClick } key={ cardInfo.id }>
                     <div className='game-card-overlay'>
                         <span className='game-card-text'>{ cardInfo.name }</span>
                     </div>  
                 </div>
-
             ))}
-          
         </>
     )
 }

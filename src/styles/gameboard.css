@@ -11,16 +11,3 @@
     border: 1px solid black;
     grid-column: 1 / 3;
 }
-
-.game-info {
-    border: 1px solid black;
-}
-
-.game-play {
-    border: 1px solid black;
-    padding: 16px;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 16px;
-}
