@@ -49,13 +49,14 @@ export default function GamePlay(props) {
         for (let i = 0; i < cardIdsArray.length; i++) {
             for (let j = i + 1; j < cardIdsArray.length; j++) {
                 if ( cardIdsArray[i] === cardIdsArray[j]) {
-                    props.setBestScore( cardIdsArray.length - 1 );  
+
+                    if ( (cardIdsArray.length - 1) > props.bestScore ) {
+                        props.setBestScore( cardIdsArray.length - 1 );  
+                    }
+                    
                     setCardIdsArray([]);
 
                     console.log('matched');
-                }
-                else {
-                    
                 }
             }
         }
