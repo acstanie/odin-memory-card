@@ -6,9 +6,8 @@ export default function GameInfo(props) {
         <div className='game-info'>
             <h2>How To Play</h2>
             <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit sint alias modi nesciunt aliquid, provident aperiam quidem 
-                cum non natus molestias itaque? Reprehenderit mollitia aspernatur quis modi, veritatis velit, est quas sed officia nam rem commodi 
-                quod maxime quibusdam? Aliquam sint illum totam hic ex qui voluptates, soluta in quasi iste ipsam asperiores error maxime laborum at 
+                Increase your score by clicking on a character &#128512;. But your score drops to zero if you can remember who you clicked 
+                before!&#129301; 
             </p>
             <h3>Score { props.score }</h3>
             <h3>Best Score { props.bestScore }</h3>
